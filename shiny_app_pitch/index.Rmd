@@ -1,0 +1,98 @@
+---
+title       : Waiting Time after a Geyser Eruption
+subtitle    : Shiny App Pitch
+author      : Kristiaan De Jongh
+job         : Data Scientist
+framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Predicting the Waiting Time after a Geyser Eruption
+
+<style>
+h1, h2, h3, h4, h5 {
+    text-align: center; 
+    margin-bottom: 20px;
+}
+article p {
+    font-size: 24px;
+    color: #231f20;
+    line-height: 1.5;
+}
+</style>
+
+<h5 style="margin-top: 0px; margin-bottom: 0px;">Kristiaan De Jongh, 11.06.2021</h5>
+
+<div style="text-align: center; margin-top: 40px;"><img src="assets/img/fountain_geyser.jpg" alt="Fountain Geyser"/></div>
+
+--- .class #id 
+
+## The Geyser Eruption App
+
+The <strong>Geyser Eruption App</strong> predicts the waiting time after a geyser 
+eruption until the next eruption.
+
+The data set used is the <i>'Old Faithful Geyser Data'</i>, the 'Old Faithful' 
+being a cone geyser located in the Yellowstone National Park, Wyoming, USA.
+
+The data set contains `r nrow(faithful)` observations of `r ncol(faithful)`
+variables, i.e. the eruption time and the waiting time until the next eruption.
+
+```{r, comment=''}
+summary(faithful$eruptions)
+summary(faithful$waiting)
+```
+
+--- .class #id 
+
+## Old Faithful Geyser Data
+
+A scatter plot of the data shows a linear relationship between the 
+eruption time and the waiting time until the next eruption.
+
+The histogram shows the distribution of the observations with an average eruption time
+`r format(mean(faithful$eruptions), digits=1, nsmall=1)` seconds.
+
+```{r, echo=FALSE, fig.width=11, fig.height=5}
+par(mfcol=c(1, 2))
+plot(faithful$eruptions, faithful$waiting, xlab = "Eruption Time", ylab = "Waiting Time",
+     main = "Waiting Time vs. Eruption Time")
+abline(lm(waiting ~ eruptions, data = faithful), col = "blue", lwd = 2)
+
+hist(faithful$eruptions, breaks = 6, xlab = "Eruption Time", ylab = "Number of Observations", 
+     main = "Number of Observations per Eruption Time")
+abline(v = mean(faithful$eruptions), col = "red", lwd = 2)
+```
+
+--- .class #id 
+
+## Prediction Model
+
+To predict the waiting time after an eruption a linear model is built, putting the 
+waiting time in respect to the eruption time. The coefficients have very small p-values,
+proving the correlation:
+
+```{r, comment=''}
+fit <- lm(waiting ~ eruptions, data = faithful)
+summary(fit)$coeff
+```
+
+Example: A prediction for the waiting time after an eruption time of 2.5 seconds:
+
+```{r, comment=''}
+predict(fit, newdata = data.frame(eruptions = c(2.5)))
+```
+
+--- .class #id 
+
+## Geyser Eruption App
+
+<small>
+Link to the App on shinyapps.io [https://kdejongh.shinyapps.io/geyser_app/](https://kdejongh.shinyapps.io/geyser_app/)
+</small>
+
+<iframe src="https://kdejongh.shinyapps.io/geyser_app/" style="height: 550px; margin-top: 0;"></iframe>

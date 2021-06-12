@@ -1,0 +1,13 @@
+name: geyser_app
+title: geyser_app
+username:
+account: kdejongh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4261471
+bundleId: 4708166
+url: https://kdejongh.shinyapps.io/geyser_app/
+when: 1623486366.13537
+lastSyncTime: 1623486366.13538
+asMultiple: FALSE
+asStatic: FALSE

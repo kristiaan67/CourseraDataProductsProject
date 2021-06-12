@@ -7,4 +7,5 @@ The project consists of 2 artefacts:
 2. A presentation pitching the 'The Geyser Eruption App' (using Slidify)
 
 Link to the App on shinyapps.io [https://kdejongh.shinyapps.io/geyser_app/](https://kdejongh.shinyapps.io/geyser_app/)
-Link to the Presentation on GitHub [https://kdejongh.shinyapps.io/geyser_app/](https://kdejongh.shinyapps.io/geyser_app/)
+
+Link to the Presentation on GitHub [https://kristiaan67.github.io/DataProductsCourseProject/shiny_app_pitch/](https://kristiaan67.github.io/DataProductsCourseProject/shiny_app_pitch/)
